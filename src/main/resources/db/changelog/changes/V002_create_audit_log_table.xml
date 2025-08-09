@@ -1,0 +1,51 @@
+<!--working only on PostgreSQL 12+-->
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+       http://www.liquibase.org/xml/ns/dbchangelog
+       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.22.xsd">
+
+    <changeSet id="V002_create_audit_log_table" author="matej.parizek">
+        <createTable tableName="audit_log">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="created_at" type="TIMESTAMPTZ" defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="method" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="path" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="query" type="TEXT"/>
+            <column name="status" type="INT"/>
+            <column name="request_headers" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="response_headers" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="client_ip" type="TEXT"/>
+            <column name="trace_id" type="TEXT"/>
+            <column name="request_body" type="TEXT"/>
+            <column name="response_body" type="TEXT"/>
+            <column name="duration_ms" type="BIGINT"/>
+        </createTable>
+
+        <createIndex indexName="idx_audit_log_created_at" tableName="audit_log">
+            <column name="created_at"/>
+        </createIndex>
+
+        <createIndex indexName="idx_audit_log_path" tableName="audit_log">
+            <column name="path"/>
+        </createIndex>
+
+        <createIndex indexName="idx_audit_log_trace_id" tableName="audit_log">
+            <column name="trace_id"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>
