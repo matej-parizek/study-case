@@ -1,15 +1,15 @@
-# Reactive Kotlin App – Hotový úkol 
+# Study Case
 
 Tento projekt představuje reaktivní aplikaci v Kotlinu, připravenou ke spuštění a dalšímu rozvoji.
 
-## 📦 Stav úkolu
+## Stav úkolu
 
 Úkol je **hotový** a aplikace je plně spustitelná.  
 Bohužel jsem během sestavování narazil na technický problém, který si vyžádal dodatečný čas.  
 Místo plánovaných **8 hodin** jsem byl nucen práci **prodloužit o 1 hodinu**.  
 Omlouvám se za tento přesah — problém byl identifikován a vyřešen.
 
-## ▶️ Jak aplikaci spustit
+## Jak aplikaci spustit
 
 1. Nejprve proveďte build pomocí Gradle:
 
@@ -23,13 +23,18 @@ Omlouvám se za tento přesah — problém byl identifikován a vyřešen.
 docker-compose up
 ```
 
+3. Pro případný build API použijte následující příkaz:
+
+```bash
+./gradlew generateEligibilityApi
+```
 
 ## Testování
 
 Základní testy jsou součástí projektu.  
 Další testy (např. integrační) budou doplněny v následujících verzích.
 
-## 💡 Technologie
+## Technologie
 
 - Kotlin
 - Spring WebFlux
